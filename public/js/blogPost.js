@@ -14,6 +14,7 @@ const handleClick = async () => {
           if (response.ok) {
             // If successful, alert the user
             alert('Added comment successfully!');
+            document.location.reload();
           } else {
             alert(response.statusText);
           }

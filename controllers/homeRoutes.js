@@ -40,10 +40,7 @@ router.get('/blogPosts/:id', withAuth, async (req, res) => {
           include: [
             {
               model: User,
-            },
-            {
-              model: BlogPost,
-            },
+            }
           ]
         },
       ],

@@ -3,11 +3,11 @@ const inputButton = document.getElementById('commentButton');
 const handleClick = async () => {
     event.preventDefault();
     const text = document.getElementById('commentInput').value.trim();
-    
+    const blogPost_id = inputButton.getAttribute('data-id');
     if(text){
         const response = await fetch('/api/comments/', {
             method: 'POST',
-            body: JSON.stringify({ text }),
+            body: JSON.stringify({ text, blogPost_id }),
             headers: { 'Content-Type': 'application/json' },
           });
 

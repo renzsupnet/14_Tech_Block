@@ -11,8 +11,37 @@
         </div>
     <div class="card-body text-dark">
         <p class="card-text">{{description}}</p>
+    </div>
+    <div class="card-footer text-dark">
+
+    {{#if commentaries.length}}
+        <div class="card text-white">
+                <div class="card-header bg-dark">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Comments</h2>
+                    </div>
+                    </div>
+                </div>
+                {{#each commentaries as |comments|}}
+                <div class="card w-100">
+                <div class="card-body" style="color:black">
+                    <p class="card-text">{{comments.text}}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">Commented by {{comments.user.username}} on {{format_date comments.date_created}}</h6>
+                </div>
+                </div>
+                {{/each}}
+        </div>
+    {{/if}}
+        <br>
+        <form>
+        <div class="mb-3">
+            <textarea class="form-control" id="commentInput" rows="4" placeholder="Comment here..."></textarea>
+        </div>
+        </form>
         <p>
-            <button class="btn btn-dark">Add Comment</button>
+            <button class="btn btn-dark" id="commentButton">Add Comment</button>
         </p>
     </div>
 </div>
+<script src="./js/blogPost.js"></script>

@@ -1,6 +1,3 @@
-  a {
-    color: white;
-  }
 
   a:link {
     text-decoration: none;
@@ -12,7 +9,7 @@
   
   a:hover {
     text-decoration: underline;
-    color: white;
+    color: red;
   }
   
   a:active {

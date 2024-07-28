@@ -77,9 +77,11 @@ router.get('/blogPosts/:id', withAuth, async (req, res) => {
       req.session.blogPost_id = blogPost.id;
 
     });
+    console.log(req.session.blogPost_id, "HELLO");
     res.render('blogPost', {
       ...blogPost,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      blogPost_id: req.session.blogPost_id
     });
   
   } catch (err) {

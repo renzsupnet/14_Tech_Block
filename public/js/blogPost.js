@@ -13,7 +13,7 @@ const handleClick = async () => {
 
           if (response.ok) {
             // If successful, alert the user
-            document.location.replace('/profile');
+            document.location.reload();
           } else {
             alert(response.statusText);
           }

@@ -5,7 +5,7 @@
                 <h2>{{title}}</h2>
             </div>
             <div class="col-3 text-align-center">
-                <p class="fs-6">Created by {{user.username}} on {{format_date date_created}}</p>
+                <p class="fs-6" data-id="{{user.username}}">Created by {{user.username}} on {{format_date date_created}}</p>
             </div>
             </div>
         </div>
@@ -31,6 +31,11 @@
                         <p class="card-text">{{comments.text}}</p>
                         <h6 class="card-subtitle mb-2 text-muted">Commented by {{comments.user.username}} on {{format_date comments.date_created}}</h6>
                     </div>
+        
+                    <div class="col-3">
+                        <button class="btn btn-sm btn-danger" style="display: none;" data-id="{{comments.user.id}}" data-id2="{{comments.id}}">DELETE</button>
+                    </div>
+
                     </div>
                 </div>
                 </div>

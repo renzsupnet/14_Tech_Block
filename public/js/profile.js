@@ -1,6 +1,7 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
   
+    // Creating a blogPost request
     const title = document.querySelector('#blogPost-title').value.trim();
     const description = document.querySelector('#blogPost-desc').value.trim();
   
@@ -21,6 +22,7 @@ const newFormHandler = async (event) => {
     }
   };
   
+  // Deleting a blogPost request
   const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');

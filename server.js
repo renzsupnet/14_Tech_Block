@@ -41,6 +41,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
+app.get('/user', (req, res) => {
+  if (req.session.logged_in && req.session.user_id) {
+    res.status(200).json({ user_id: req.session.user_id });
+  } else {
+    res.status(401).json({ message: 'Not authenticated' });
+  }
+});
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });

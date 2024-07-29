@@ -1,17 +1,1 @@
 
-  a:link {
-    text-decoration: none;
-  }
-  
-  a:visited {
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-    color: red;
-  }
-  
-  a:active {
-    text-decoration: underline;
-  }

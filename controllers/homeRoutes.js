@@ -73,7 +73,6 @@ router.get('/blogPosts/:id', withAuth, async (req, res) => {
 
     const blogPost = blogPostData.get({ plain: true });
 
-    console.log(req.session.blogPost_id, "HELLO");
     res.render('blogPost', {
       ...blogPost,
       logged_in: req.session.logged_in
@@ -94,7 +93,6 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    console.log(user, "HELLO!")
     res.render('profile', {
       ...user,
       logged_in: true
@@ -113,5 +111,6 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
 
 module.exports = router;

@@ -1,17 +1,23 @@
 <div class="card text-white">
         <div class="card-header bg-dark">
          <div class="row">
-            <div class="col-9">
+            <div class="col-12 text-center">
                 <h2>{{title}}</h2>
             </div>
-            <div class="col-3 text-align-center">
-                <p class="fs-6" data-id="{{user.username}}">Created by {{user.username}} on {{format_date date_created}}</p>
-            </div>
-            </div>
         </div>
-    <div class="card-body text-dark">
-        <p class="card-text">{{description}}</p>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="fs-6" >Created by {{user.username}} on {{format_date date_created}}</p>
+            </div>
+          </div>  
+        </div>
+    <div class="card-body text-dark text-center">
+        <textarea disabled class="form-control">{{description}}</textarea>
+        <button class="btn btn-dark col-3 mt-3" id="updateButton" data-id="{{user.id}}" data-id2="{{id}}" style="display: none;">Update Post</button>
     </div>
+    
+            
+
     <div class="card-footer text-dark">
 
     {{#if commentaries.length}}
@@ -48,9 +54,9 @@
             <textarea class="form-control" id="commentInput" rows="4" placeholder="Comment here..."></textarea>
         </div>
         </form>
-        <p>
+
             <button class="btn btn-dark" id="commentButton" data-id="{{id}}">Add Comment</button>
-        </p>
+
     </div>
 </div>
 <script src="/js/blogPost.js"></script>

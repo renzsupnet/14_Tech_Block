@@ -1,26 +1,30 @@
 const inputButton = document.getElementById('commentButton');
-
-// Only render delete button if the logged in user is actual commenter
-const renderDelButton = async () => {
+const updateButton = document.getElementById('updateButton');
+// Only render delete and update button if the logged in user is the original commenter or poster
+const renderButtons = async () => {
   const deleteButton = document.querySelectorAll('.col-3 button');
   const response = await fetch('/user');
   const user = await response.json();
-
+  
   deleteButton.forEach( async button => {
     if ( button.getAttribute('data-id') ){
-      
-        console.log(user.user_id, button.getAttribute('data-id'));
         if(user.user_id == button.getAttribute('data-id')){
           button.style.display = 'grid';
           button.addEventListener('click', delButtonHandler);
         }
-
     }
   });
+
+  console.log(user.user_id, updateButton.getAttribute('data-id') )
+  if(user.user_id == updateButton.getAttribute('data-id')){
+    updateButton.style.display = 'grid';
+    updateButton.addEventListener('click', updatePostHandler)
+  }
+
 }
 
 // Creating a comment after clicking the button
-const handleClick = async () => {
+const handleComment = async () => {
     event.preventDefault();
     const text = document.getElementById('commentInput').value.trim();
     const blogPost_id = inputButton.getAttribute('data-id');
@@ -38,6 +42,37 @@ const handleClick = async () => {
             alert(response.statusText);
           }
     }
+}
+
+// Make the post textarea editable and in focus as well as change the button from update to submit 
+const updatePostHandler = async () => {
+  event.preventDefault();
+  const textArea = document.querySelector('textarea');
+  textArea.disabled = false;
+  textArea.focus();
+  updateButton.textContent = "Submit";
+  const blogPost_id = updateButton.getAttribute('data-id2');
+  updateButton.addEventListener('click', async () => {
+    const description = textArea.value.trim();
+    const response = await fetch(`/api/blogPosts/${blogPost_id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ description }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    console.log('Response:', response); // Debugging
+    if (response.ok) {
+      // If successful, reload
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
+
+  });
+  
+
+
+  
 }
 
 // Deleting a comment
@@ -61,5 +96,5 @@ const delButtonHandler = async (event) => {
 
 
 
-inputButton.addEventListener('click', handleClick);
-window.addEventListener('load', renderDelButton);
+inputButton.addEventListener('click', handleComment);
+window.addEventListener('load', renderButtons);

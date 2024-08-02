@@ -39,6 +39,7 @@ const handleComment = async () => {
             // If successful, alert the user
             document.location.reload();
           } else {
+            console.log(text, blogPost_id);
             alert(response.statusText);
           }
     }

@@ -29,7 +29,7 @@ Commentary.init(
     blogPost_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'blogPost',
         key: 'id',
       },
     },
